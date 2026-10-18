@@ -1,25 +1,29 @@
-# Breast-Cancer-Project — Shared Google Drive Folder
+# Two-Tier Breast Cancer Risk Stratification Project
 
-This is the shared data/model/output storage for the project, linked
-from the GitHub repo's `models/README.md` and `data/download_*.py`
-scripts. Share this folder with "Editor" access to all 3 team members.
+## Team
+- Person A — Stage 1 (Risk-Factor Screening Model) — [Name, ID]
+- Person B — Stage 1.5 (Imaging CNN Model) — [Name, ID]
+- Person C — Stage 2 (Diagnostic Model) + Integration Lead — [Name, ID]
 
-## Folder guide
-- raw_datasets/   -> downloaded source data (BCSC, CBIS-DDSM, WDBC)
-- trained_models/ -> versioned model files (.pkl, .pt) -- never overwrite, add new versions
-- figures_and_outputs/ -> exported SHAP plots, Grad-CAM images, EDA charts (used directly in the report)
-- report_drafts/  -> the actual Word/PowerPoint files for real-time collaborative editing
+## What this project does
+A three-stage, cost-gated breast cancer triage pipeline:
+1. **Stage 1** — low-cost risk-factor screening (BCSC dataset) -> flags who needs imaging
+2. **Stage 1.5** — mammogram imaging classifier (CBIS-DDSM dataset) -> flags who needs biopsy
+3. **Stage 2** — FNA cytology diagnostic support (Wisconsin WDBC dataset) -> supports pathologist diagnosis
 
-## How to set this up in real Google Drive
-Google Drive does NOT auto-extract zip files on upload. To recreate
-this structure in Drive:
-1. Unzip this file on your computer
-2. Open Google Drive in your browser
-3. Drag the whole unzipped "Breast-Cancer-Project" folder into Drive
-   (this preserves the full folder structure automatically)
-4. Right-click the folder -> Share -> add your teammates as Editors
-5. Get the folder's shareable link and paste it into the GitHub repo's
-   models/README.md and docs/ARCHITECTURE.md
+See `CONTRACT.md` for the shared conventions every team member follows.
 
-Alternative: use Google Drive Desktop (syncs a local folder to Drive
-automatically) or `rclone` if you prefer a command-line upload.
+## How to run this project
+
+1. Clone this repo
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run the relevant download script in `data/` for the dataset you need
+   (e.g. `python data/download_bcsc.py`)
+4. Open the relevant notebook in `notebooks/`
+5. Trained model files are NOT stored in this repo — see `models/README.md`
+   for Google Drive download links
+
+## Folder structure
+
+See `docs/ARCHITECTURE.md` for the full explanation of this repo's layout
+and how it links to the shared Google Drive folder.
